@@ -11,8 +11,45 @@ param(
     [string]$version
 )
 
+function Remove-LastNSubfolders {
+    param (
+        [string]$Path,
+        [int]$N
+    )
+
+    # Split the path into components
+    $Components = $Path -split "\\"
+
+    # Remove the last N components
+    $NewPath = $Components[0..($Components.Length - $N - 1)] -join "\"
+
+    return $NewPath
+}
+
+function CopyPluginsToPublishDir {
+
+    # Example:
+    # $publishPath:       "C:\...\DdnsUpdate\src\DdnsUpdate.Application\bin\Release\net8.0\publish\win-x64"
+    # source plugin path: "C:\...\DdnsUpdate\src\DdnsUpdate.Application\bin\Release\net8.0\win-x64\plugins"
+    # dest plugin path:   "C:\...\DdnsUpdate\src\DdnsUpdate.Application\bin\Release\net8.0\publish\win-x64\plugins"
+
+    $machine = Split-Path $publishPath -Leaf
+    $sourcePluginPath = $publishPath -replace "\\publish\\$($machine)$", "\$($machine)\plugins"
+    $destPluginpath = [IO.Path]::Combine($publishPath, "plugins") + '\'
+
+    #write-host "machine: $machine"
+    #write-host "publish: $publishPath"
+    #write-host "source: $sourcePluginPath"
+    #write-host "dest:   $destPluginPath"
+
+    Copy-item -Force -Recurse $sourcePluginPath -Destination $destPluginPath
+}
+
 # Convert publishPath to an absolute path
 $publishPath = Resolve-Path $publishPath
+
+# Copy the plugins to the correct publish directory
+CopyPluginsToPublishDir
 
 # Check if the publishPath is an existing directory
 if (!(Test-Path -Path $publishPath -PathType Container)) {

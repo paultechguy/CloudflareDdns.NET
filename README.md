@@ -1,22 +1,31 @@
-# DdnsUpdate.NET (CloudFlare)
+# DdnsUpdate.NET (Email and CloudFlare Support)
 
-The primary use case for this application is to update Cloudflare DNS records with an externally visible IP address.  It will allow you to continuously update your Cloudflare DNS records using the Cloudflare dynamic DNS (DDNS) API.  The application can be used on Windows or Linux.
+This Windows/Linux application provides a pluggable architecture to initiate actions when an external IP address changes. By default, the application
+is distributed with two ready-to-use plugins when an external IP address changes:
+
+- Cloudflare: Update DNS records when using the Cloudflare dynamic DNS (DDNS) API.
+- Send an email notification using an SMTP server.
 
 ## Requirements
-- Cloudflare account with one or more domains
 - Windows 10 or higher (Windows-x64) or Linux Ubuntu (Linux-x64)
-- Visual Studio 2022 with .NET 8 (if you want to review the source code)
+- Cloudflare account with one or more domains
+- Access to an SMTP email server (optional for sending email)
+- Visual Studio 2022 with .NET 8 (optional for source code changes)
 
 ## Download Now
 Here you can download the [latest release](https://github.com/paultechguy/DdnsUpdate.NET/releases) that contains the Windows and Linux packages along with source code.
 
 ## Terminology
-For the purpose of this document, the use of the word *application* refers to the DdnsUpdate.NET application.
+For the purpose of this document:
+- *application* refers to the DdnsUpdate.NET application.
+- *IP address* refers to the externally visible IP address where the application is executing.
 
 ## Take A Test Drive
-Before you configure the application to update your Cloudflare DNS records with our external IP address, you should test the application to make sure it works with the default configuration.  Doing this will ensure the configuration is correct and features such as logging are working.
+The application is distributed with plugins that will execute out-of-the-box, but additional configuration is required for each plugin to operate fully.
+Before you configure the available plugins, you should test the application as it is distributed.
+Doing this will ensure your computer system is fully compatible with the application.
 
-Unpack the deployment file into a directory.  The directory will contain the following content:
+Unpack the deployment file into a local directory.  The directory will contain the following content:
 
 ### Windows
     config (directory)

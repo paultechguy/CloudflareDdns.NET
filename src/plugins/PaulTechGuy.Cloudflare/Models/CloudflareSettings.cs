@@ -11,12 +11,6 @@ namespace PaulTechGuy.Cloudflare.Models;
 public class CloudflareSettings
 {
    /// <summary>
-   /// The name of the <see cref="CloudflareSettings"/> configuration section in
-   /// the appSettings file(s).
-   /// </summary>
-   public const string ConfigurationName = "CloudflareSettings";
-
-   /// <summary>
    /// The <see cref="CloudflareDefaultDomain"/> object properties to use when
    /// the Domains object properties do not contain a value.
    /// </summary>
