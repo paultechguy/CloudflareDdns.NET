@@ -69,7 +69,7 @@ public class SettingsContext(
       // get the main "plugins" section and check children for "name" equal to the plugin name
       IConfigurationSection? pluginSection = this.configuration.GetSection("plugins");
       IEnumerable<IConfigurationSection> plugins = pluginSection.GetChildren();
-      IConfigurationSection? pluginTarget = plugins.Where(p => p["name"] == plugin.PluginName).FirstOrDefault();
+      IConfigurationSection? pluginTarget = plugins.Where(p => p["name"] == plugin.PluginName).SingleOrDefault();
 
       // if no plugins or children with the plugin name...we're outta here
       if (pluginTarget == null)

@@ -34,7 +34,7 @@ function CopyPluginsToPublishDir {
     # dest plugin path:   "C:\...\DdnsUpdate\src\DdnsUpdate.Application\bin\Release\net8.0\publish\win-x64\plugins"
 
     $machine = Split-Path $publishPath -Leaf
-    $sourcePluginPath = $publishPath -replace "\\publish\\$($machine)$", "\$($machine)\plugins"
+    $sourcePluginPath = $publishPath -replace "\\publish\\$($machine)$", "\$($machine)\plugins\*"
     $destPluginpath = [IO.Path]::Combine($publishPath, "plugins") + '\'
 
     #write-host "machine: $machine"
