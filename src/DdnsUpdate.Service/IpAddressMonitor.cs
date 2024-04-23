@@ -445,10 +445,17 @@ public partial class IpAddressMonitor(
       }
    }
 
+   private static string SleepCountToDisplay(int pauseMilliseconds)
+   {
+      TimeSpan span = TimeSpan.FromMilliseconds(pauseMilliseconds);
+
+      return span.ToString("h'h 'm'm 's's'");
+   }
+
    private bool SleepBetweenAllIpUpdates(CancellationToken cancelToken)
    {
       int pauseMilliseconds = this.GetUpdatePauseMilliseconds();
-      this.logger.LogAny(LogLevel.Information, $"Sleeping for {Math.Round(pauseMilliseconds / 1000M, 2)} seconds...");
+      this.logger.LogAny(LogLevel.Information, $"Sleeping until next scheduled udpate: {SleepCountToDisplay(pauseMilliseconds)}");
 
       bool wasCanceled = cancelToken.WaitHandle.WaitOne(pauseMilliseconds);
 
