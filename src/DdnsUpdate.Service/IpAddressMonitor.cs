@@ -403,7 +403,7 @@ public partial class IpAddressMonitor(
 
       if (!this.appSettings.WorkerServiceSettings.MessageIsEnabled)
       {
-         this.logger.LogAny(LogLevel.Warning, "#{counter}: Email support disabled.  See appSettings.WorkerServiceSettings.MessageIsEnabled");
+         this.logger.LogAny(LogLevel.Warning, $"#{loopCounter}: Email support disabled.  See appSettings.WorkerServiceSettings.MessageIsEnabled");
 
          return;
       }
@@ -448,6 +448,7 @@ public partial class IpAddressMonitor(
    private bool SleepBetweenAllIpUpdates(CancellationToken cancelToken)
    {
       int pauseMilliseconds = this.GetUpdatePauseMilliseconds();
+      this.logger.LogAny(LogLevel.Information, $"Sleeping for {Math.Round(pauseMilliseconds / 1000M, 2)} seconds...");
 
       bool wasCanceled = cancelToken.WaitHandle.WaitOne(pauseMilliseconds);
 

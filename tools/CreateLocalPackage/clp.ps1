@@ -11,21 +11,6 @@ param(
     [string]$version
 )
 
-function Remove-LastNSubfolders {
-    param (
-        [string]$Path,
-        [int]$N
-    )
-
-    # Split the path into components
-    $Components = $Path -split "\\"
-
-    # Remove the last N components
-    $NewPath = $Components[0..($Components.Length - $N - 1)] -join "\"
-
-    return $NewPath
-}
-
 function CopyPluginsToPublishDir {
 
     # Example:
@@ -35,13 +20,16 @@ function CopyPluginsToPublishDir {
 
     $machine = Split-Path $publishPath -Leaf
     $sourcePluginPath = $publishPath -replace "\\publish\\$($machine)$", "\$($machine)\plugins\*"
-    $destPluginpath = [IO.Path]::Combine($publishPath, "plugins") + '\'
+    $destPluginPath = [IO.Path]::Combine($publishPath, "plugins") + '\'
 
     #write-host "machine: $machine"
     #write-host "publish: $publishPath"
     #write-host "source: $sourcePluginPath"
     #write-host "dest:   $destPluginPath"
 
+    if (!(Test-Path -Path $destPluginPath -PathType Container)) {
+        New-Item -Path $destPluginPath -Type Directory
+    }
     Copy-item -Force -Recurse $sourcePluginPath -Destination $destPluginPath
 }
 

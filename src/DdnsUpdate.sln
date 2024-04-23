@@ -25,15 +25,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{2AF15E19-8954-4C89-8E8D-FFEB864E22F8}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LocalPackage", "LocalPackage", "{4037AA4A-4347-4F5A-B526-D8159FCAE348}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CreateLocalPackage", "CreateLocalPackage", "{4037AA4A-4347-4F5A-B526-D8159FCAE348}"
 	ProjectSection(SolutionItems) = preProject
-		..\tools\LocalPackage\clp.ps1 = ..\tools\LocalPackage\clp.ps1
-		..\tools\LocalPackage\readme.txt = ..\tools\LocalPackage\readme.txt
+		..\tools\CreateLocalPackage\clp.ps1 = ..\tools\CreateLocalPackage\clp.ps1
+		..\tools\CreateLocalPackage\readme.txt = ..\tools\CreateLocalPackage\readme.txt
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitHubRelease", "GitHubRelease", "{CF8D5F50-8E2E-412C-860C-FF4B7CA1CD6E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CreateGitHubRelease", "CreateGitHubRelease", "{CF8D5F50-8E2E-412C-860C-FF4B7CA1CD6E}"
 	ProjectSection(SolutionItems) = preProject
-		..\tools\GitHubRelease\readme.txt = ..\tools\GitHubRelease\readme.txt
+		..\tools\CreateGitHubRelease\readme.txt = ..\tools\CreateGitHubRelease\readme.txt
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DdnsUpdate.Email.Core", "DdnsUpdate.Email.Core\DdnsUpdate.Email.Core.csproj", "{70E64586-B23E-4510-8470-A9208F671E65}"
