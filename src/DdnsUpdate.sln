@@ -42,6 +42,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaulTechGuy.Cloudflare", "p
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaulTechGuy.EmailOnly", "plugins\PaulTechGuy.EmailOnly\PaulTechGuy.EmailOnly.csproj", "{CE8C6E0D-8AF5-4130-8C45-347C852FB877}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CreateAppRelease", "CreateAppRelease", "{319224D2-20FE-47A5-8545-3DD56B142B68}"
+	ProjectSection(SolutionItems) = preProject
+		..\tools\CreateAppRelease\car.ps1 = ..\tools\CreateAppRelease\car.ps1
+		..\tools\CreateAppRelease\readme.txt = ..\tools\CreateAppRelease\readme.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -90,6 +96,7 @@ Global
 		{CF8D5F50-8E2E-412C-860C-FF4B7CA1CD6E} = {2AF15E19-8954-4C89-8E8D-FFEB864E22F8}
 		{3DFCD3EA-7985-4A0C-8352-F3F1517CD327} = {02731B05-FA85-4A6C-9295-CFF2175382DB}
 		{CE8C6E0D-8AF5-4130-8C45-347C852FB877} = {02731B05-FA85-4A6C-9295-CFF2175382DB}
+		{319224D2-20FE-47A5-8545-3DD56B142B68} = {2AF15E19-8954-4C89-8E8D-FFEB864E22F8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F4D9A72E-EAAC-4A7D-B980-870DF5DDFC69}

@@ -1,7 +1,6 @@
 # DdnsUpdate.NET (Email and CloudFlare Support)
 
-This Windows/Linux application provides a pluggable architecture to initiate actions when an external IP address changes. By default, the application
-is distributed with two ready-to-use plugins when an external IP address changes:
+This Windows/Linux application provides a pluggable, extensible, architecture to initiate actions when an external IP address changes. By default, the application is distributed with ready-to-use plugins to detect and take action when an external IP address changes.  These plugins are:
 
 - Cloudflare: Update DNS records when using the Cloudflare dynamic DNS (DDNS) API.
 - Send an email notification using an SMTP server.
@@ -13,7 +12,7 @@ is distributed with two ready-to-use plugins when an external IP address changes
 - Visual Studio 2022 with .NET 8 (optional for source code changes)
 
 ## Download Now
-Here you can download the [latest release](https://github.com/paultechguy/DdnsUpdate.NET/releases) that contains the Windows and Linux packages along with source code.
+Download the [latest release](https://github.com/paultechguy/DdnsUpdate.NET/releases) there that contains both the Windows and Linux packages.
 
 ## Terminology
 For the purpose of this document:
@@ -21,11 +20,9 @@ For the purpose of this document:
 - *IP address* refers to the externally visible IP address where the application is executing.
 
 ## Take A Test Drive
-The application is distributed with plugins that will execute out-of-the-box, but additional configuration is required for each plugin to operate fully.
-Before you configure the available plugins, you should test the application as it is distributed.
-Doing this will ensure your computer system is fully compatible with the application.
+The application is distributed with plugins that will execute out-of-the-box, but additional configuration is required for each plugin to operate fully. Before you configure the available plugins, you should test the application. Doing so will ensure your computer system is fully compatible with the application.
 
-Unpack the deployment file into a local directory.  The directory will contain the following content:
+Unpack the deployment package into a local directory.  The directory will contain the following content:
 
 ### Windows
     config (directory)

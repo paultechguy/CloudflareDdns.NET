@@ -5,9 +5,6 @@ param(
     [string]$platform,
 
     [Parameter(Mandatory=$true)]
-    [string]$version,
-
-    [Parameter(Mandatory=$true)]
     [string]$output
 )
 
@@ -67,6 +64,30 @@ function WriteError {
     WriteMessage -message $message -color 'Red' -bracketed $bracketed
 }
 
+function GetApplicationVersion {
+    param (
+        [Parameter(Mandatory=$true)]
+        [string]$path
+    )
+
+    if (!(Test-Path $path)) {
+        Write-Error "File not found: $path"
+
+        return $null
+    }
+
+    [xml]$xmlContent = Get-Content -Path $path
+
+    $versionNode = $xmlContent.Project.PropertyGroup.Version
+
+    if ($versionNode) {
+        return $versionNode
+    }
+    else {
+        return $null
+    }
+}
+
 function UpdateTimestamps {
     param (
         [string]$directoryPath,
@@ -87,6 +108,7 @@ function UpdateTimestamps {
         exit 1
     }
 }
+
 function GetMainAppDirectory {
     $mainAppName = 'DdnsUpdate.Application'
     $path = [IO.Path]::Combine($slnDirectory, $mainAppName)
@@ -177,7 +199,7 @@ function CreateAppPackage {
         $scriptPath = [IO.Path]::Combine($rootDirectory, 'tools', 'CreateLocalPackage', 'clp.ps1')
 
         # run the script to create a local package for this architecture/platform
-        & $scriptPath $pubLocation $platform $version
+        & $scriptPath $pubLocation $platform $applicationVersion
     }
     finally {
         Set-Location $rootDirectory
@@ -222,6 +244,10 @@ try {
             exit 1
         }
     }
+	
+	# we need the version
+	$mainAppProjectPath = GetMainAppProjectPath
+	$applicationVersion = GetApplicationVersion $mainAppProjectPath
 
     BuildPlugins
 
